@@ -2,7 +2,7 @@
   <div class="home">
     <div class="hero">
       <div class="hero-content">
-        <h1 class="gradient-title">✨欢迎使用{{ config.siteName }}</h1>
+        <h1 class="gradient-title">✨欢迎使用{{ config.public.siteName }}</h1>
         <p class="subtitle">基于Cloudflare的个人图床新选择</p>
       </div>
     </div>
