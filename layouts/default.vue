@@ -38,7 +38,7 @@
 
 <script setup>
 const config = useRuntimeConfig()
-const shortName = config.siteName.repalce('图床','')
+const shortName = config.siteName.replace('图床','')
 const { getUser, logout } = useAuth()
 onMounted(() => {
   getUser()
