@@ -3,7 +3,7 @@
     <nav class="navbar">
       <div class="container nav-container">
         <NuxtLink to="/" class="logo">
-          <span class="logo-full">{{ config.public.siteNmae }}</span>
+          <span class="logo-full">{{ config.public.siteName }}</span>
           <span class="logo-short">{{ shortName }}</span>
         </NuxtLink>
 
@@ -30,7 +30,7 @@
 
     <footer class="footer">
       <div class="container footer-content">
-        <p class="copyright">© {{ currentYear }} {{config.public.siteNmae}} · 简单好用的图床服务 </p>
+        <p class="copyright">© {{ currentYear }} {{ config.public.siteName }} · 简单好用的图床服务 </p>
       </div>
     </footer>
   </div>
