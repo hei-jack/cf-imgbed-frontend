@@ -38,6 +38,7 @@
 
 <script setup>
 const config = useRuntimeConfig()
+console.log(cconfig.public.siteName)
 const shortName = config.public.siteName.replace('图床','')
 const { getUser, logout } = useAuth()
 onMounted(() => {
