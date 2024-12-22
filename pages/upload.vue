@@ -9,7 +9,7 @@
 
     <div class="upload-area" @drop.prevent="handleDrop" @dragover.prevent @dragenter.prevent @click="triggerFileInput"
       @paste="handlePaste">
-      <input ref="fileInput" type="file" accept="image/*" multiple class="hidden" @change="handleFileSelect">
+      <input ref="fileInput" type="file" accept="image/*,video/mp4" multiple class="hidden" @change="handleFileSelect">
       <div class="upload-hint" v-if="!previewImages.length">
         <p>点击、拖拽或粘贴图片到这里上传</p>
         <p class="sub-hint">支持 jpg、png、gif、webp、svg、bmp、tiff、ico、avif、heic/heif mp4 格式</p>
