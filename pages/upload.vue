@@ -164,7 +164,7 @@ const validTypes = [
   'image/x-icon',   // .ico
   'image/avif',     // .avif
   'image/heic',     // .heic
-  'image/heif'      // .heif
+  'image/heif',      // .heif
   'video/mp4'       // .mp4
 ]
 
