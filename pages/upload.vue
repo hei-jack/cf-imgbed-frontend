@@ -479,6 +479,10 @@ const formatFileSize = (bytes) => {
   border-radius: 4px;
 }
 
+.preview-item video {
+  width: 100%;
+}
+
 .preview-overlay {
   position: absolute;
   bottom: 0;
