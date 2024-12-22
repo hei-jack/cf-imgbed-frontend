@@ -60,8 +60,10 @@ jobs:
           SITE_NAME: ${{ secrets.SITE_NAME }}
         run: |
           echo "开始部署到 Cloudflare Pages..."
-          npm run pages:deploy &>/dev/null || {
-            echo "❌ 部署失败"
+          npm run pages:deploy > deploy_error.log 2>&1
+          if [ $? -ne 0 ]; then
+            echo "❌ 部署失败，错误日志已保存到 deploy_error.log"
+            cat deploy_error.log  # 打印错误日志
             exit 1
-          }
+          fi
           echo "✅ 部署成功"
