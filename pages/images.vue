@@ -140,7 +140,6 @@ const fetchImages = async () => {
     })
     if (data.success) {
       images.value = data.data.list
-      console.log(data.data.list)
       total.value = data.data.pagination.total
       totalPages.value = data.data.pagination.totalPages
     } else {
