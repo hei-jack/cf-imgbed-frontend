@@ -12,7 +12,7 @@
       <input ref="fileInput" type="file" accept="image/*" multiple class="hidden" @change="handleFileSelect">
       <div class="upload-hint" v-if="!previewImages.length">
         <p>点击、拖拽或粘贴图片到这里上传</p>
-        <p class="sub-hint">支持 jpg、png、gif、webp、svg、bmp、tiff、ico、avif、heic/heif 格式</p>
+        <p class="sub-hint">支持 jpg、png、gif、webp、svg、bmp、tiff、ico、avif、heic/heif mp4 格式</p>
         <div class="icon">
           <span class="upload-arrow">↑</span>
         </div>
@@ -134,8 +134,12 @@ const handlePaste = async (event) => {
       .filter(item => item.type.startsWith('image/'))
       .map(item => item.getAsFile())
 
-    if (imageFiles.length === 0) {
-      error.value = '剪贴板中未找到图片.'
+    const videoFiles = items
+      .filter(item => item.type.startsWith('video/'))
+      .map(item => item.getAsFile())
+
+    if (imageFiles.length === 0 && videoFiles.length === 0) {
+      error.value = '剪贴板中未找到图片或视频.'
       return
     }
 
@@ -161,13 +165,14 @@ const validTypes = [
   'image/avif',     // .avif
   'image/heic',     // .heic
   'image/heif'      // .heif
+  'video/mp4'       // .mp4
 ]
 
 const addFiles = async (files) => {
   const validFiles = files.filter(file => {
     const isValid = validTypes.includes(file.type)
     if (!isValid) {
-      error.value = '不支持的图片格式，请使用 jpg、png、gif、webp、svg、bmp、tiff、ico、avif、heic/heif 格式'
+      error.value = '不支持的图片格式，请使用 jpg、png、gif、webp、svg、bmp、tiff、ico、avif、heic/heif mp4 格式'
     }
     return isValid
   })
@@ -195,7 +200,7 @@ const addFiles = async (files) => {
         }
 
         // 针对不同格式采用不同的压缩策略
-        if (file.size > 500 * 1024 && !file.type.includes('gif')) {
+        if (file.size > 500 * 1024 && !file.type.includes('gif') && !file.type.includes('mp4')) {
           // PNG 文件特殊处理
           if (extension === 'png') {
             options.fileType = 'image/jpeg'  // 转换为 JPEG 以获得更好的压缩率
