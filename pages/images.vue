@@ -30,7 +30,7 @@
             @change="toggleImageSelection(image.url)">
         </div>
         
-        <video v-if="image.name.indexOf('.mp4') !== -1" controls>
+        <video v-if="image.url.indexOf('.mp4') !== -1" controls>
           <source :src="`${user.r2_custom_url}/${image.url}`" :alt="image.name" type="video/mp4">
         </video>
         
