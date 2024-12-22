@@ -20,7 +20,7 @@
 
       <div v-else class="preview-grid">
         <div v-for="(preview, index) in previewImages" :key="index" class="preview-item">
-          <video v-if="preview.url.indexOf('.mp4') !== -1" controls>
+          <video v-if="preview.file.name.indexOf('.mp4') !== -1" controls>
             <source :src="preview.url" :alt="preview.file.name" type="video/mp4">
           </video>
           <img :src="preview.url" :alt="preview.file.name" v-else>
