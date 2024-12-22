@@ -29,8 +29,13 @@
           <input type="checkbox" :checked="selectedImages.includes(image.url)"
             @change="toggleImageSelection(image.url)">
         </div>
+        
+        <video v-if="image.name.indexOf('.mp4') !== -1" controls>
+          <source :src="`${user.r2_custom_url}/${image.url}`" :alt="image.name" type="video/mp4">
+        </video>
+        
         <img :dataSrc="user" :src="`${user.r2_custom_url}/${image.url}`" :alt="image.name"
-          @click="openPreview(image.url)" class="preview-cursor">
+          @click="openPreview(image.url)" class="preview-cursor" v-else>
         <div class="image-info">
           <span class="image-name">{{ image.name }}</span>
           <button class="delete-btn" @click="handleDelete(image.url)">删除</button>
@@ -255,6 +260,10 @@ onMounted(() => {
   height: 200px;
   object-fit: cover;
   border-radius: 4px;
+}
+
+.image-card video {
+  width: 100%;
 }
 
 .image-info {
